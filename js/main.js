@@ -1,4 +1,6 @@
 var duration = 50
+var id 
+var n = 0
   $('.button-wrapper').on('click', 'button', function(e){
     let $button = $(e.currentTarget) // button
     let speed = $button.attr('data-speed')
@@ -16,16 +18,20 @@ var duration = 50
       case 'fast':
         duration = 5
         break
+      case 'stop':
+        n=css.length
+        break
     }
   })
+  
   function xx( code, fn){
     let container = document.querySelector('#code')
     let styleTag = document.querySelector('#styleTag')
-    let n = 0
-    let id
+    
+   
     id = setTimeout(function run(){
       n+=1
-      container.innerHTML = code.substring(0,n)
+      container.innerHTML = Prism.highlight(code.substring(0,n), Prism.languages.css, 'css')
       styleTag.innerHTML = code.substring(0,n)
       container.scrollTop = container.scrollHeight
       if(n < code.length){
@@ -38,6 +44,7 @@ var duration = 50
 
 var css = `/*今天给大家画一个多啦A梦
             *先画出头的大概形状
+            *顺便给代码来点高亮
             */
             .head {
                 width: 300px;
@@ -48,7 +55,8 @@ var css = `/*今天给大家画一个多啦A梦
                 position: relative;
             }
             /*
-            *画白脸
+            *
+            *画出哆啦A梦的大脸~~
             */
             .white {
                 width: 262px;
@@ -63,7 +71,7 @@ var css = `/*今天给大家画一个多啦A梦
                 z-index: 0;
             }
             /*
-            *画眼睛
+            *画一双眼睛~~
             */
             .eye {
                 position: absolute;
@@ -86,7 +94,7 @@ var css = `/*今天给大家画一个多啦A梦
                 transform: translateX(100%);
             }
             /*
-            *画眼睛里面
+            *画小小眼珠~~
             */
             .eye-inner {
                 width: 13px;
@@ -116,7 +124,7 @@ var css = `/*今天给大家画一个多啦A梦
                 transform: translate(-50%, -50%);
             }
             /*
-            *画哆啦A梦的胡须
+            *画出有趣的胡须~~
             */
             .beard {
                 width: 75px;
@@ -189,7 +197,7 @@ var css = `/*今天给大家画一个多啦A梦
                 right: 20px;
             }
             /*
-            *画多啦A梦的小鼻子
+            *画可爱的小鼻子
             */
             .nose {
                 width: 27px;
@@ -253,7 +261,7 @@ var css = `/*今天给大家画一个多啦A梦
                 z-index: 1;
             }
             /*
-            *画它的嘴巴
+            *画出爱吃铜锣烧的大嘴~~
             */
             .mouse-wrapper {
                 width: 226px;
@@ -278,7 +286,7 @@ var css = `/*今天给大家画一个多啦A梦
                 overflow: hidden;
             }
             /*
-            *画嘴巴里的小舌头
+            *再来一只小舌头~~
             */
             .mouse-inner {
                 width: 80px;
@@ -316,6 +324,7 @@ var css = `/*今天给大家画一个多啦A梦
                 left: 50%;
             }
             /*
-            *一只哆啦A梦成型了
+            *ok，哆啦A梦成型啦~~
             */`
 xx(css)
+

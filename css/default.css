@@ -19,7 +19,7 @@ body {
 .button-wrapper {
     display:flex;
     position: absolute;
-    left: 350px;
+    left: 450px;
     justify-content: center;
     align-content: center;
     flex-direction: column;
